@@ -34,7 +34,7 @@
             <div class="search-box">
               <div class="contact-content-form-input">
                 <h2>Vehicle Route</h2>
-                <form action="" method="POST">
+                <form action="/" method="POST">
                   <div class="form-group">
                     <div class="container px-0 mx-0">
                       <div class="row px-0 align-items-center">
@@ -44,10 +44,10 @@
                         <div class="col-10">
                           <input
                             type="text"
-                            name="name"
+                            name="yourLocation"
                             class="form-control"
                             id="name"
-                            placeholder="Your Location"
+                            placeholder="<%= yourLocation %>"
                           />
                         </div>
                       </div>
@@ -72,10 +72,10 @@
                         <div class="col-10">
                           <input
                             type="text"
-                            name="name"
+                            name="yourDestination"
                             class="form-control"
                             id="name"
-                            placeholder="Your Destination"
+                            placeholder="<%= yourDestination %>"
                           />
                         </div>
                       </div>
@@ -86,7 +86,7 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="text-left">
-                          <button type="button" class="btn btn-secondary">
+                          <button type="submit" class="btn btn-secondary">
                             <i class="las la-search-location"></i>
                           </button>
                         </div>
@@ -99,6 +99,7 @@
               <div class="data-box">
                 <div class="data-box-title">
                   <h3>What should I find for you?</h3>
+                  <h3> From <%= yourLocation %> to <%= yourDestination %></h3>
                 </div>
                 
                 <div class="data-box-image">
