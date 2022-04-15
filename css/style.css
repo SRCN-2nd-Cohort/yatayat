@@ -148,3 +148,24 @@ html {
 .data-box .data-box-image img{
     width: 100%;
 }
+
+.data-box .data-box-content{
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: inset 4px 4px 10px #d9d6d4, inset -4px -4px 10px #fffffe;
+}
+
+.data-box .data-box-content h6{
+  font-family: 'Lato';
+  color: #3e2723;
+  font-weight: bold;
+  font-size: 1em;
+  margin-left: 0.5em;
+}
+
+.data-box .data-box-content p{
+  font-weight: bold;
+  font-family: 'Fredoka';
+}
