@@ -39,10 +39,6 @@ app.post('/', function(req, res){
   const yourLocation = req.body.yourLocation;
   const yourDestination = req.body.yourDestination;
 
-  res.render('index', {
-    yourLocation: yourLocation,
-    yourDestination: yourDestination
-  });
 })
 
 
