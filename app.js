@@ -3,9 +3,14 @@ const path = require("path")
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
+const mapboxgl = require("mapbox-gl");
+const https = require("https");
+
 
 const DB = 'mongodb+srv://CSGroupSRCN:CSGroupSRCNxmap@cluster0.biuyk.mongodb.net/FindVehicleForYourRoute?retryWrites=true&w=majority';
 const app = express();
+
+
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -20,12 +25,12 @@ mongoose.connect(DB).then(() => {
 
 
 
-const mapSchema = new mongoose.Schema({
+
+const vehicleSchema = new mongoose.Schema({
 //write the format of the data to be stored...
 });
 
-const Map = new mongoose.model("Map", mapSchema);
-
+const vehicle = new mongoose.model("vehicle", vehicleSchema);
 
 
 app.get("/", function(req, res){
@@ -33,7 +38,8 @@ app.get("/", function(req, res){
     yourLocation: 'Your Location',
     yourDestination: 'Your Destination'
   });
-})
+
+});
 
 app.post('/', function(req, res){
   const yourLocation = req.body.yourLocation;
@@ -42,6 +48,8 @@ app.post('/', function(req, res){
 
 
 })
+
+
 
 
 
