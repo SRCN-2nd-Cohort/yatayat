@@ -1,0 +1,33 @@
+use node-geocoder to get the latitude and longitude of the place which is entered in the input
+tag in the html.
+
+use Matrix api to find the distance between two points.
+
+
+
+busFare
+Location
+latLong = [x,y]
+fare from gopikrishna park
+
+
+const vehicleFare = new mongoose.Schema(
+{
+  location: String,
+
+}
+);
+
+
+const busFare = {
+
+}
+
+https://www.graphhopper.com/products/
+
+
+
+1 degree of latitude is 111 KM.
+1 degree of longitude is 111 KM.
+
+0.0009009 degrees is 100 m.
