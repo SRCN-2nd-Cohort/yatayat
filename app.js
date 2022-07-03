@@ -52,13 +52,24 @@ const vehicleSchema = new mongoose.Schema({
   busName: String,
   lat: [Number],
   long: [Number],
+  routeName: String,
+});
+
+// To store coordinates of the stops 
+const stopsSchema = new mongoose.Schema({
+  stopName: String,
+  lat:Number,
+  long: Number,
 });
 
 /* const vehicleFare = new mongoose.Schema({}); */
 
 const Vehicle = new mongoose.model("Vehicle", vehicleSchema);
+const Stop = new mongoose.model("Stop", stopsSchema);
 
 /* const Fare = new mongoose.model("Fare", vehicleFare); */
+
+
 
 app.get("/", function (req, res) {
   res.render("index", {
@@ -89,6 +100,9 @@ app.get("/", function (req, res) {
       }
     }
   });
+
+
+ 
 });
 
 app.post("/", function (req, res) {
@@ -96,11 +110,13 @@ app.post("/", function (req, res) {
   const yourDestination = req.body.yourDestination;
 });
 
+
 app.post("/vehicles", function (req, res) {
   const newVehicle = new Vehicle({
     busName: req.body.busName,
     lat: req.body.lat,
     long: req.body.long,
+    routeName: req.body.routeName,
   });
   newVehicle.save(function (err) {
     if (!err) {
