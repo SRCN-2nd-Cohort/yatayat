@@ -3,10 +3,9 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
-const mapboxgl = require("mapbox-gl");
 const https = require("https");
-const { userInfo } = require("os");
-
+const axios = require("axios");
+var busName = "";
 
 const DB =
   "mongodb+srv://CSGroupSRCN:CSGroupSRCNxmap@cluster0.biuyk.mongodb.net/FindVehicleForYourRoute?retryWrites=true&w=majority";
@@ -31,92 +30,119 @@ mongoose
   })
   .catch((err) => console.log("No connection"));
 
-// Getting the latitude and longitude of the place
-let place = "Minbhawan%2C%20Kathmandu";
-const url =
-  "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
-  place +
-  ".json?worldview=cn&access_token=" +
-  mapboxAPI +
-  "";
-/* getting the latitude and longitude of the place. */
-https.get(url, function (response) {
-  response.on("data", function (data) {
-    const geoData = JSON.parse(data);
-    locationArray = geoData.features[0].center;
-    console.log(locationArray);
-  });
-});
 
 const vehicleSchema = new mongoose.Schema({
   busName: String,
   lat: [Number],
   long: [Number],
-  routeName: String,
-});
-
-// To store coordinates of the stops 
-const stopsSchema = new mongoose.Schema({
-  stopName: String,
-  lat:Number,
-  long: Number,
+  routeName: String
 });
 
 /* const vehicleFare = new mongoose.Schema({}); */
+/* const Fare = new mongoose.model("Fare", vehicleFare); */
+
 
 const Vehicle = new mongoose.model("Vehicle", vehicleSchema);
-const Stop = new mongoose.model("Stop", stopsSchema);
-
-/* const Fare = new mongoose.model("Fare", vehicleFare); */
 
 
 
 app.get("/", function (req, res) {
   res.render("index", {
-    yourLocation: "Your Location",
-    yourDestination: "Your Destination",
+    busName: busName
   });
 
-  Vehicle.find({}, function (err, docs) {
-    if (err) {
+
+});
+
+
+
+
+app.post("/", function(req, res){
+  let distance = req.body.distance;
+  let originLat = req.body.originLat;
+  let originLong = req.body.originLat;
+  let destinationLat = req.body.destinationLat;
+  let destinationLong = req.body.destinationLong;
+  console.log(originLat, distance);
+  Vehicle.find({}, function(err, docs){
+    if (err){
       console.log(err);
-    } else {
-      for (let i = 0; i < docs.length; i++) {
+    }else{
+      for (let i = 0; i < docs.length; i++){
         let latitudeMap = docs[i].lat;
         let longitudeMap = docs[i].long;
-        for (let j = 0; j < latitudeMap.length; j++) {
+        for (let j = 0; j < latitudeMap.length; j++){
           if (
-            (locationArray[0] >= latitudeMap[j] - 0.005) &&
-            (locationArray[0] <= latitudeMap[j] + 0.005)
-          ) {
+            (originLat >= latitudeMap[j] - 0.005) &&
+            (originLat <= latitudeMap[j] + 0.005)
+          ){
             if (
-              (locationArray[1] >= longitudeMap[j] - 0.005) &&
-              (locationArray[1] <= longitudeMap[j] + 0.005)
-            ) {
-              console.log(latitudeMap[j], longitudeMap[j], j);
+              (originLong >= longitudeMap[j] - 0.005) &&
+              (originLong <= longitudeMap[j] + 0.005)
+            ){
+              for (let k = 0; k < latitudeMap.length; k++){
+                if (
+                  (destinationLat >= latitudeMap[k] - 0.005) &&
+                  (destinationLat <= latitudeMap[k] + 0.005)
+                ){
+                  if ((destinationLong >= longitudeMap[k] - 0.005) &&
+                  (destinationLong <= longitudeMap[k] + 0.005)){
+                    console.log(docs[i].busName);
+                  }
+                }                
+              }
             }
           }
+
         }
       }
     }
   });
 
+  });
 
- 
+
+
+
+app.listen(3000, function () {
+  console.log("Server has started successfully.");
 });
 
-app.post("/", function (req, res) {
-  const yourLocation = req.body.yourLocation;
-  const yourDestination = req.body.yourDestination;
-});
 
 
-app.post("/vehicles", function (req, res) {
+/*  Vehicle.find({}, function (err, docs) {
+  if (err) {
+    console.log(err);
+  } else {
+    for (let i = 0; i < docs.length; i++) {
+      let latitudeMap = docs[i].lat;
+      let longitudeMap = docs[i].long;
+      for (let j = 0; j < docs.length; j++) {
+        if (
+          (locationArray[0] >= latitudeMap[j] - 0.005) &&
+          (locationArray[0] <= latitudeMap[j] + 0.005)
+        ) {
+            if (
+              (locationArray[1] >= longitudeMap[j] - 0.005) &&
+              (locationArray[1] <= longitudeMap[j] + 0.005)
+            ) {
+
+            }
+          }
+        }
+      }
+    }
+  }
+);  
+ */
+
+
+
+/* app.post("/vehicles", function (req, res) {
   const newVehicle = new Vehicle({
     busName: req.body.busName,
     lat: req.body.lat,
     long: req.body.long,
-    routeName: req.body.routeName,
   });
   newVehicle.save(function (err) {
     if (!err) {
@@ -125,8 +151,4 @@ app.post("/vehicles", function (req, res) {
       res.send(err);
     }
   });
-});
-
-app.listen(3000, function () {
-  console.log("Server has started successfully.");
-});
+}); */
