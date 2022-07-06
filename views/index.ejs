@@ -25,20 +25,22 @@
     />
 
     <!-- required for mapbox gl -->
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
 
     <!-- mapboxgl directions -->
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
-<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl-directions/4.1.0/mapbox-gl-directions.js" integrity="sha512-Z8lZiIvZ+FAE+58aEqBdz3J6wkdPr6+lCJ2O6e6/nRSr7B1iowgXxpVtSjh/PrGzVhv/8Cug1bu0EAzKzOY21A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl-directions/4.1.0/mapbox-gl-directions.css" integrity="sha512-vD8I46RzX0FTuCMciAdrVmfQzIhjlbGPD7hJA09Tob41KkMdvz11TQj3sMWCZfouS5QdokiDDQxqc3cG/M1kyg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl-directions/4.1.0/mapbox-gl-directions.min.css" integrity="sha512-nmFon3yYzA2gU0JkhMJtyeP31gzYc/afFrBTXzeXCY7ZtllkC7jhiKtyBSIHf5JC3TMxGn9AtB9YbA/UYmOIrA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl-directions/4.1.0/mapbox-gl-directions.min.js" integrity="sha512-FqOGX4OdgWOuzDyQU5xOb3es/UeFUxMTx9hOcm7T+/oZJ4fsS/lvRg3lsq7TkhXRnwWrT8+p03QSUPZP7Fr7Ww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
 <!-- Load the `mapbox-gl-geocoder` plugin. -->
 <!-- <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
-<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css"> -->
-
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+ -->
 
     <link rel="stylesheet" href="css/style.css" />
-    <title>SRCN 2nd Cohort Project</title>
+    <title>Yatayat</title>
   </head>
   <body>
     <div class="main-content">
@@ -56,13 +58,24 @@
                           <i class="las la-street-view"></i>
                         </div>
                         <div class="col-10">
-                          <input
+<!--                           <input
                             type="text"
                             name="name"
                             class="form-control"
                             id="name"
                             placeholder="Your Location"
-                          />
+                          />  -->
+                          <form action="/" method="post">
+                            <input type="hidden" name="distance" autocomplete="off" value="" id="distance">
+                            <input type="hidden" name="originLat" autocomplete="off" value="" id="originLat">
+                            <input type="hidden" name="originLong" autocomplete="off" value="" id="originLong">
+                            <input type="hidden" name="destinationLat" autocomplete="off" value="" id="destinationLat">
+                            <input type="hidden" name="destinationLong" autocomplete="off" value="" id="destinationLong">
+                            <button type="submit">Find</button>
+                          </form>
+
+
+                         
                         </div>
                       </div>
                     </div>
@@ -84,13 +97,14 @@
                           <i class="las la-map-marked"></i>
                         </div>
                         <div class="col-10">
-                          <input
+                          
+<!--                           <input
                             type="text"
                             name="name"
                             class="form-control"
                             id="name"
                             placeholder="Your Destination"
-                          />
+                          /> -->
                         </div>
                       </div>
                     </div>

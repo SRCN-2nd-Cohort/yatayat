@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-.directions-control-instructions, .mapbox-directions-profile{
+.directions-control-instructions, .mapbox-directions-profile, .directions-icon{
   display: none!important;
 }
 
@@ -35,6 +35,8 @@ html {
   border-radius: 4px;
   background: #efebe9;
   box-shadow: inset 5px 5px 13px #dedbd9, inset -5px -5px 13px #fffbf9;
+  position: absolute;
+  z-index: 999;
 }
 
 .main-content .map-box {
@@ -172,6 +174,13 @@ html {
 .data-box .data-box-content p{
   font-weight: bold;
   font-family: 'Fredoka';
+}
+
+.mapboxgl-ctrl-top-left{
+  position: absolute;
+  top: 25%;
+  left: 7%;
+  z-index: 999;
 }
 
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
