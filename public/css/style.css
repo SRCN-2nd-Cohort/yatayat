@@ -8,6 +8,30 @@
   display: none!important;
 }
 
+.mapbox-directions-component-keyline{
+  box-shadow: none;
+}
+
+.mapboxgl-ctrl-geocoder{
+    font-family: "Lato";
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    border: none!important;
+    outline: none;
+    border-radius: 30px!important;
+    background: #efebe9;
+    box-shadow: inset 4px 4px 10px #d9d6d4, inset -4px -4px 10px #fffffe;
+    margin: 10px 0;
+}
+
+.mapbox-directions-origin input[type=text]{
+  box-shadow: none;
+}
+
+.mapbox-form-label{
+  display: none;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -178,7 +202,7 @@ html {
 
 .mapboxgl-ctrl-top-left{
   position: absolute;
-  top: 25%;
+  top: 15%;
   left: 7%;
   z-index: 999;
 }

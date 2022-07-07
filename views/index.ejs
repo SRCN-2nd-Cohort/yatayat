@@ -25,17 +25,42 @@
     />
 
     <!-- required for mapbox gl -->
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css" rel="stylesheet">
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
 
     <!-- mapboxgl directions -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl-directions/4.1.0/mapbox-gl-directions.js" integrity="sha512-Z8lZiIvZ+FAE+58aEqBdz3J6wkdPr6+lCJ2O6e6/nRSr7B1iowgXxpVtSjh/PrGzVhv/8Cug1bu0EAzKzOY21A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl-directions/4.1.0/mapbox-gl-directions.css" integrity="sha512-vD8I46RzX0FTuCMciAdrVmfQzIhjlbGPD7hJA09Tob41KkMdvz11TQj3sMWCZfouS5QdokiDDQxqc3cG/M1kyg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl-directions/4.1.0/mapbox-gl-directions.min.css" integrity="sha512-nmFon3yYzA2gU0JkhMJtyeP31gzYc/afFrBTXzeXCY7ZtllkC7jhiKtyBSIHf5JC3TMxGn9AtB9YbA/UYmOIrA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl-directions/4.1.0/mapbox-gl-directions.min.js" integrity="sha512-FqOGX4OdgWOuzDyQU5xOb3es/UeFUxMTx9hOcm7T+/oZJ4fsS/lvRg3lsq7TkhXRnwWrT8+p03QSUPZP7Fr7Ww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
-<!-- Load the `mapbox-gl-geocoder` plugin. -->
-<!-- <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl-directions/4.1.0/mapbox-gl-directions.js"
+      integrity="sha512-Z8lZiIvZ+FAE+58aEqBdz3J6wkdPr6+lCJ2O6e6/nRSr7B1iowgXxpVtSjh/PrGzVhv/8Cug1bu0EAzKzOY21A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl-directions/4.1.0/mapbox-gl-directions.css"
+      integrity="sha512-vD8I46RzX0FTuCMciAdrVmfQzIhjlbGPD7hJA09Tob41KkMdvz11TQj3sMWCZfouS5QdokiDDQxqc3cG/M1kyg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl-directions/4.1.0/mapbox-gl-directions.min.css"
+      integrity="sha512-nmFon3yYzA2gU0JkhMJtyeP31gzYc/afFrBTXzeXCY7ZtllkC7jhiKtyBSIHf5JC3TMxGn9AtB9YbA/UYmOIrA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl-directions/4.1.0/mapbox-gl-directions.min.js"
+      integrity="sha512-FqOGX4OdgWOuzDyQU5xOb3es/UeFUxMTx9hOcm7T+/oZJ4fsS/lvRg3lsq7TkhXRnwWrT8+p03QSUPZP7Fr7Ww=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Load the `mapbox-gl-geocoder` plugin. -->
+    <!-- <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
  -->
 
@@ -58,24 +83,43 @@
                           <i class="las la-street-view"></i>
                         </div>
                         <div class="col-10">
-<!--                           <input
-                            type="text"
-                            name="name"
-                            class="form-control"
-                            id="name"
-                            placeholder="Your Location"
-                          />  -->
-                          <form action="/" method="post">
-                            <input type="hidden" name="distance" autocomplete="off" value="" id="distance">
-                            <input type="hidden" name="originLat" autocomplete="off" value="" id="originLat">
-                            <input type="hidden" name="originLong" autocomplete="off" value="" id="originLong">
-                            <input type="hidden" name="destinationLat" autocomplete="off" value="" id="destinationLat">
-                            <input type="hidden" name="destinationLong" autocomplete="off" value="" id="destinationLong">
-                            <button type="submit">Find</button>
+                          <form action="/" method="post" id="queryForm">
+                            <input
+                              type="hidden"
+                              name="distance"
+                              autocomplete="off"
+                              value=""
+                              id="distance"
+                            />
+                            <input
+                              type="hidden"
+                              name="originLat"
+                              autocomplete="off"
+                              value=""
+                              id="originLat"
+                            />
+                            <input
+                              type="hidden"
+                              name="originLong"
+                              autocomplete="off"
+                              value=""
+                              id="originLong"
+                            />
+                            <input
+                              type="hidden"
+                              name="destinationLat"
+                              autocomplete="off"
+                              value=""
+                              id="destinationLat"
+                            />
+                            <input
+                              type="hidden"
+                              name="destinationLong"
+                              autocomplete="off"
+                              value=""
+                              id="destinationLong"
+                            />
                           </form>
-
-
-                         
                         </div>
                       </div>
                     </div>
@@ -96,16 +140,7 @@
                         <div class="col-2">
                           <i class="las la-map-marked"></i>
                         </div>
-                        <div class="col-10">
-                          
-<!--                           <input
-                            type="text"
-                            name="name"
-                            class="form-control"
-                            id="name"
-                            placeholder="Your Destination"
-                          /> -->
-                        </div>
+                        <div class="col-10"></div>
                       </div>
                     </div>
                   </div>
@@ -114,7 +149,11 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="text-left">
-                          <button type="button" class="btn btn-secondary">
+                          <button
+                            type="submit"
+                            form="queryForm"
+                            class="btn btn-secondary"
+                          >
                             <i class="las la-search-location"></i>
                           </button>
                         </div>
@@ -152,28 +191,16 @@
 
                 <div class="container-fluid">
                   <div class="row">
-                    <div class="col-6 px-1">
+                    <div class="col-12 px-1">
                       <div class="data-box-content">
-                        <h6><i class="las la-bus"></i> Vechicle:</h6>
+                        <h6><i class="las la-bus"></i>Vechicle:</h6>
                         <p>Balaju Yatayat</p>
                       </div>
                     </div>
-                    <div class="col-6 px-1">
+                    <div class="col-12 px-1">
                       <div class="data-box-content">
-                        <h6><i class="las la-torii-gate"></i> Bus Stop:</h6>
-                        <p>RNAC, Jamal</p>
-                      </div>
-                    </div>
-                    <div class="col-6 px-1">
-                      <div class="data-box-content">
-                        <h6><i class="las la-wallet"></i> Bus Fair:</h6>
+                        <h6><i class="las la-wallet"></i>Bus Route:</h6>
                         <p>Rs. 25</p>
-                      </div>
-                    </div>
-                    <div class="col-6 px-1">
-                      <div class="data-box-content">
-                        <h6><i class="las la-clock"></i> Estimated Time:</h6>
-                        <p>20 - 25 Min</p>
                       </div>
                     </div>
                   </div>
@@ -181,7 +208,6 @@
               </div>
             </div>
           </div>
-
 
           <div id="map"></div>
           <!-- <div class="col-lg-8">
