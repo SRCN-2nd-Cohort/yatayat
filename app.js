@@ -60,17 +60,18 @@ app.get("/", function (req, res) {
 app.post("/", function(req, res){
   let distance = req.body.distance;
   let originLat = req.body.originLat;
-  let originLong = req.body.originLat;
+  let originLong = req.body.originLong;
   let destinationLat = req.body.destinationLat;
   let destinationLong = req.body.destinationLong;
-  console.log(originLat, distance);
+  console.log(originLat, originLong, destinationLat, destinationLong);
   Vehicle.find({}, function(err, docs){
     if (err){
       console.log(err);
     }else{
+      console.log("started");
       for (let i = 0; i < docs.length; i++){
-        let latitudeMap = docs[i].lat;
-        let longitudeMap = docs[i].long;
+        var latitudeMap = docs[i].lat;
+        var longitudeMap = docs[i].long;
         for (let j = 0; j < latitudeMap.length; j++){
           if (
             (originLat >= latitudeMap[j] - 0.005) &&
@@ -85,6 +86,7 @@ app.post("/", function(req, res){
                   (destinationLat >= latitudeMap[k] - 0.005) &&
                   (destinationLat <= latitudeMap[k] + 0.005)
                 ){
+                  console.log("third step");
                   if ((destinationLong >= longitudeMap[k] - 0.005) &&
                   (destinationLong <= longitudeMap[k] + 0.005)){
                     console.log(docs[i].busName);

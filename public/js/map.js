@@ -57,10 +57,10 @@ directions.on("route", (e) => {
   var location = directions.getOrigin();
   var destination = directions.getDestination();
   document.getElementById('distance').value = routes[0].distance;
-  document.getElementById('originLat').value = location.geometry.coordinates[0];
-  document.getElementById('originLong').value = location.geometry.coordinates[1];
-  document.getElementById('destinationLat').value = destination.geometry.coordinates[0];
-  document.getElementById('destinationLong').value = destination.geometry.coordinates[1];
+  document.getElementById('originLat').value = location.geometry.coordinates[1];
+  document.getElementById('originLong').value = location.geometry.coordinates[0];
+  document.getElementById('destinationLat').value = destination.geometry.coordinates[1];
+  document.getElementById('destinationLong').value = destination.geometry.coordinates[0];
 });
 };
 
