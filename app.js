@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const ejs = require("ejs");
 const https = require("https");
 const axios = require("axios");
-var busName = "";
 
 const DB =
   "mongodb+srv://CSGroupSRCN:CSGroupSRCNxmap@cluster0.biuyk.mongodb.net/FindVehicleForYourRoute?retryWrites=true&w=majority";
@@ -48,7 +47,7 @@ const Vehicle = new mongoose.model("Vehicle", vehicleSchema);
 
 app.get("/", function (req, res) {
   res.render("index", {
-    busName: busName
+    busesList: "   "
   });
 
 
@@ -64,12 +63,13 @@ app.post("/", function(req, res){
   let destinationLat = req.body.destinationLat;
   let destinationLong = req.body.destinationLong;
   console.log(originLat, originLong, destinationLat, destinationLong);
+  var buses = [];
   Vehicle.find({}, function(err, docs){
     if (err){
       console.log(err);
     }else{
-      console.log("started");
       for (let i = 0; i < docs.length; i++){
+        var state = false;
         var latitudeMap = docs[i].lat;
         var longitudeMap = docs[i].long;
         for (let j = 0; j < latitudeMap.length; j++){
@@ -86,12 +86,18 @@ app.post("/", function(req, res){
                   (destinationLat >= latitudeMap[k] - 0.005) &&
                   (destinationLat <= latitudeMap[k] + 0.005)
                 ){
-                  console.log("third step");
                   if ((destinationLong >= longitudeMap[k] - 0.005) &&
                   (destinationLong <= longitudeMap[k] + 0.005)){
-                    console.log(docs[i].busName);
+                    buses.push(docs[i].busName);
+                    console.log(buses);
+                    console.log(docs[i].routeName);
+                    state = true;
+                    break;
                   }
                 }                
+              }
+              if (state){
+                break;
               }
             }
           }
@@ -99,8 +105,13 @@ app.post("/", function(req, res){
         }
       }
     }
+    if (buses.length === 0){
+      buses.push("Sorry! we don't know any of the vehicle in that route")
+    }
+    res.render("index",{
+      busesList: buses
+    })
   });
-
   });
 
 
