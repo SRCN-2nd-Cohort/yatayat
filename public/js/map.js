@@ -1,3 +1,6 @@
+const primary = document.getElementById('primaryButton');
+const secondary = document.getElementById('secondaryButton');
+
 mapboxgl.accessToken =
   "pk.eyJ1IjoibGFsaXR4MTciLCJhIjoiY2wyMzNyNWY5MDUzdDNpcWtsb2xieTVwNCJ9.sjyS81tClREPljDILNY4hg";
 
@@ -62,6 +65,20 @@ directions.on("route", (e) => {
   document.getElementById('destinationLat').value = destination.geometry.coordinates[1];
   document.getElementById('destinationLong').value = destination.geometry.coordinates[0];
 });
+
+/* function somePrimaryAction(e){
+  e.preventDefault();
+  console.log('you clicked the primary button');
+}
+
+function clickPrimaryButton(e){
+  e.preventDefault();
+  console.log('you clicked the secondary button');
+  primary.click();
+}
+
+primary.addEventListener("click", somePrimaryAction, false);
+secondary.addEventListener("click", clickPrimaryButton, false); */
 };
 
 
@@ -77,3 +94,12 @@ directions.on("route", (e) => {
           tail=routes.map(r => r.legs[0].steps.length)//get length of instructions
           routes.map(r => r.legs[0].steps[tail-1].name)//get destination
         }); */
+
+
+
+
+
+
+
+
+        
