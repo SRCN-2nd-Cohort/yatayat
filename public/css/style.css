@@ -6,8 +6,13 @@
 
 #primaryButton{
   position: relative;
-  top: 8rem;
-  right: 3rem;
+  top: 7rem;
+  right: 4rem;
+  z-index: 9999;
+}
+
+#primaryButton i{
+  font-size: 1em;
 }
 
 .directions-control-instructions, .mapbox-directions-profile, .directions-icon{
