@@ -47,7 +47,8 @@ const Vehicle = new mongoose.model("Vehicle", vehicleSchema);
 
 app.get("/", function (req, res) {
   res.render("index", {
-    busesList: "   "
+    busesList: "Waiting.........",
+    busesRoute:"Waiting........."
   });
 
 
@@ -64,6 +65,7 @@ app.post("/", function(req, res){
   let destinationLong = req.body.destinationLong;
   console.log(originLat, originLong, destinationLat, destinationLong);
   var buses = [];
+  var busesRoute = [];
   Vehicle.find({}, function(err, docs){
     if (err){
       console.log(err);
@@ -90,7 +92,7 @@ app.post("/", function(req, res){
                   (destinationLong <= longitudeMap[k] + 0.005)){
                     buses.push(docs[i].busName);
                     console.log(buses);
-                    console.log(docs[i].routeName);
+                    busesRoute.push(docs[i].routeName);
                     state = true;
                     break;
                   }
@@ -109,7 +111,8 @@ app.post("/", function(req, res){
       buses.push("Sorry! we don't know any of the vehicle in that route")
     }
     res.render("index",{
-      busesList: buses
+      busesList: buses,
+      busesRoute: busesRoute
     })
   });
   });
