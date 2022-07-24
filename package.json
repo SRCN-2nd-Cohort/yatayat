@@ -4,7 +4,8 @@
   "description": "This is project which enables to find vehicle for your route.",
   "main": "app.js",
   "scripts": {
-    "devStart": "nodemon app.js"
+    "devStart": "nodemon app.js",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
