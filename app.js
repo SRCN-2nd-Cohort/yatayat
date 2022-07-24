@@ -5,11 +5,10 @@ const mongoose = require("mongoose");
 const ejs = require("ejs");
 const https = require("https");
 const axios = require("axios");
+require('dotenv').config();
 
-const DB =
-  "mongodb+srv://CSGroupSRCN:CSGroupSRCNxmap@cluster0.biuyk.mongodb.net/FindVehicleForYourRoute?retryWrites=true&w=majority";
-mapboxAPI =
-  "pk.eyJ1IjoibGFsaXR4MTciLCJhIjoiY2wyMzJzOWI4MGwwODNqbzFld2NyOGxoOCJ9.xXjxDFpc0Lg9xeexzEfbMA";
+const DB = process.env.DATABASE_CONNECT;
+
 const app = express();
 
 app.set("view engine", "ejs");
@@ -117,10 +116,12 @@ app.post("/", function(req, res){
   });
   });
 
+  let port = process.env.PORT;
+  if (port == null || port == "") {
+    port = 3000;
+  }
 
-
-
-app.listen(3000, function () {
+app.listen(port, function () {
   console.log("Server has started successfully.");
 });
 

@@ -66,19 +66,6 @@ directions.on("route", (e) => {
   document.getElementById('destinationLong').value = destination.geometry.coordinates[0];
 });
 
-/* function somePrimaryAction(e){
-  e.preventDefault();
-  console.log('you clicked the primary button');
-}
-
-function clickPrimaryButton(e){
-  e.preventDefault();
-  console.log('you clicked the secondary button');
-  primary.click();
-}
-
-primary.addEventListener("click", somePrimaryAction, false);
-secondary.addEventListener("click", clickPrimaryButton, false); */
 };
 
 
