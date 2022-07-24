@@ -62,7 +62,6 @@ app.post("/", function(req, res){
   let originLong = req.body.originLong;
   let destinationLat = req.body.destinationLat;
   let destinationLong = req.body.destinationLong;
-  console.log(originLat, originLong, destinationLat, destinationLong);
   var buses = [];
   var busesRoute = [];
   Vehicle.find({}, function(err, docs){
