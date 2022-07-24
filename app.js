@@ -7,7 +7,7 @@ const https = require("https");
 const axios = require("axios");
 require('dotenv').config();
 
-const DB = process.env.DATABASE_CONNECT;
+const DB = "mongodb+srv://CSGroupSRCN:CSGroupSRCNxmap@cluster0.biuyk.mongodb.net/FindVehicleForYourRoute?retryWrites=true&w=majority";
 
 const app = express();
 
